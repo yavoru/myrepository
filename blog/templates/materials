@@ -1,0 +1,59 @@
+user.html
+{% extends "base.html" %} {% block content %} {% load static %} {% load filters %}
+<br />
+
+<div class="row">
+    <div class="col-3 row">
+        <div class="col-1"></div>
+        <div class="col">
+            <a onclick="history.back()"
+                ><p class="btn border-3 border-primary-subtle text-light">
+                    back
+                </p></a
+            >
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card text-light bg-dark border-3 border-primary-subtle row">
+            <div class="col-1"></div>
+            <div class="col">
+                <div style="height: 10px"></div>
+                <h6 class="card-title">
+                    {{post.author}} _
+                    <small>{{post.post_date}}</small>
+                </h6>
+                <p class="card-body">{{post.body}}</p>
+                {% if post.image %}
+                <img
+                    src="{{post.image.url}}"
+                    width="50%"
+                    height="50%"
+                    class="card-body"
+                />
+                {% endif %}
+                <br />
+                <div class="container justify-content-start">
+                    <div class="row">
+                        <div class="col-1">
+                            <a
+                                href="{% url 'edit-post' post.pk %}"
+                                class="text-light border-3 border-primary-subtle btn"
+                                >Edit</a
+                            >
+                        </div>
+                        <div class="col-1">
+                            <a
+                                href="{% url 'delete-post' post.pk %}"
+                                class="text-light border-3 border-primary-subtle btn"
+                                >Delete</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <br /><br />
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

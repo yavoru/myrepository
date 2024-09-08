@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-4 row">
+        <div class="col-1"></div>
+        <div class="col">
+            <a onclick="history.back()"
+                ><p class="btn border-3 border-primary-subtle text-light">
+                    back
+                </p></a
+            >
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card text-light bg-dark border-3 border-primary-subtle p-4">
+            <ul class="list-unstyled bg-dark col-10 m-auto">
+                <li class="bg-dark">
+                        <div class="row justify-content-center">
+                            <div
+                                class="card bg-dark border-3 border-primary-subtle text-light row"
+                            >
+                                <div style="height: 7px"></div>
+                                <div class="col1"></div>
+                                <h6 class="card-title">Search Result for {{request.GET.keyword}}</h6>
+                            </div>
+                        </div>
+                </li>
+                <div style="height: 10px"></div>
+                {% for result in results %}
+                <li class="bg-dark">
+                    <div class="row justify-content-center">
+                        <div
+                            class="text-decoration-none text-light"
+                        >
+                            <div
+                                class="card bg-dark border-3 border-primary-subtle text-light row"
+                            >
+                                <div style="height: 10px"></div>
+                                <div class="col1"></div>
+                                <h6 class="card-title">{{result.author}}</h6>
+                                <p class="card-body">{{result.body}}</p>
+                                {% if result.image %}
+                                <img src="{{result.image.url}}" alt="">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <div style="height: 10px"></div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

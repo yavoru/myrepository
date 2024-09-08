@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.esm.min.js"></script>
+        <script src="{% static 'script.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <title>s1mple</title>
+    </head>
+    <body class="bg-dark text-light" style="overflow-x: hidden">
+        <div>
+            <div
+                class="row align-content-center bg-info nav"
+                style="max-height: 40px; padding-top: 5px; padding-bottom: 5px"
+            >
+                <div class="row">
+                    <div class="col-4 float-start">
+                        <a
+                            href="/"
+                            class="text-decoration-none text-dark d-flex"
+                            ><h1
+                                class="text-start web-title"
+                                style="padding-top: 5px"
+                            >
+                                &nbsp; s1mple
+                            </h1>
+                            <p style="padding-top: 2.5%">
+                                &nbsp; <b>welcome to simple</b>
+                            </p></a
+                        >
+                    </div>
+                    <div class="col-4">
+                        <form action="{% url 'search' %}" , method="GET">
+                            <div style="display: inline-flex; max-height: 40px;margin-top:7px;">
+                                <input
+                                    class="search-box bg-info rounded-3"
+                                    name="keyword"
+                                    type="search"
+                                    id="search-bar"
+                                    size="72"
+                                    placeholder="Search"
+                                    style="
+                                        height: 30px;
+                                        min-height:20px;
+                                        max-height: 30px;
+                                        margin-top: 10px;
+                                        padding-left: 20px;
+                                    "
+                                />
+                                <button
+                                    class="btn bg-transparent text-dark"
+                                    style="
+                                        width: 32px;
+                                        margin-left: 2ox; 
+                                        margin-top: 10px;
+                                    "
+                                ></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div
+                        class="col-4 d-flex justify-content-end"
+                        style="padding: 3px"
+                    >
+                        {% if request.user.is_authenticated %}
+                        <div style="display: flex">
+                            <a
+                                style="
+                                    margin-right: 17px;
+                                    margin-top: 15px;
+                                    color: black;
+                                    text-transform: lowercase;
+                                "
+                                href="{% url 'user' %}"
+                            >
+                                <b>welcome {{request.user.username}}</b>
+                            </a>
+                            <a
+                                href="{% url 'log-out' %}"
+                                class="btn m-2 border-3 border-dark"
+                            >
+                                Log Out
+                            </a>
+                        </div>
+                        {% else %}
+                        <a
+                            href="  {% url 'log-in' %}"
+                            class="btn m-2 border-3 border-dark"
+                        >
+                            Sign In
+                        </a>
+                        <a
+                            href="{% url 'sign-up' %}"
+                            class="btn m-2 border-3 border-dark"
+                        >
+                            Sign Up
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="base-container">
+                <div class="container-fluid">
+                    <br />
+                    <div class="container-fluid">
+                        <div class="row">
+                            <br />
+                            {% block content %} {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

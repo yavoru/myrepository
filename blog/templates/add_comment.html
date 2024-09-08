@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %} {% load static %} {% load filters %}
+
+<div class="row">
+    <div class="col-3 row">
+        <div class="col-1"></div>
+        <div class="col">
+            <a onclick="history.back()"
+                ><p class="btn border-3 border-primary-subtle text-light">
+                    back
+                </p></a
+            >
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card text-light bg-dark border-3 border-primary-subtle p-4">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="d-block">
+                    <label for="name">Name</label>
+                    {{ form.name|addclass:'border-3 border-primary-subtle d-block' }}
+                    <label for="body">Comment</label>
+                    {{ form.body|addclass:'border-3 border-primary-subtle d-block' }}
+                </div>
+                <br />
+                <button class="btn border-3 border-primary-subtle text-light">
+                    Post
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

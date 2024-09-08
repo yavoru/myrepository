@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+
+<br /><br />
+<ul class="list-unstyled bg-dark col-lg-4 col-sm-12 m-auto">
+    <li class="bg-dark">
+        <a href="{% url 'add-post' %}" class="text-decoration-none text-light">
+            <div class="row justify-content-center">
+                <div
+                    class="card bg-dark border-3 border-primary-subtle text-light row"
+                >
+                    <div style="height: 7px"></div>
+                    <div class="col1"></div>
+                    <h6 class="card-title">Add post</h6>
+                </div>
+            </div>
+        </a>
+    </li>
+    <div style="height: 10px"></div>
+    {% for post in object_list reversed %}
+    <li class="bg-dark">
+        <div class="row justify-content-center">
+            <a
+                href="{% url 'post-view' post.pk %}"
+                class="text-decoration-none text-light"
+            >
+                <div
+                    class="card bg-dark border-3 border-primary-subtle text-light row"
+                >
+                    <div style="height: 10px"></div>
+                    <div class="col1"></div>
+                    <h6 class="card-title">{{post.author}}</h6>
+                    <p class="card-body">{{post.body}}</p>
+                    {% if post.image %}
+                    <img src="{{post.image.url}}" alt="" />
+                    {% endif %}
+                </div>
+            </a>
+        </div>
+    </li>
+    <div style="height: 10px"></div>
+    {% endfor %}
+</ul>
+{% endblock %}

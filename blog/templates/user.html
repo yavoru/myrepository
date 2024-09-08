@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+    <div class="col-1 row">
+        <div class="col-1"></div>
+        <div class="col">
+            <a onclick="history.back()"
+                ><p class="btn border-3 border-primary-subtle text-light">
+                    back
+                </p></a
+            >
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card text-light bg-dark border-3 border-primary-subtle p-4">
+            <img src="{{user.avatar.url}}" alt="user avatar" />
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="card text-light bg-dark border-3 border-primary-subtle p-4">
+            <div class="p-1">
+                <h6>{{ user.username }}</h6>
+                <p>Address: {{ user.address }}</p>
+                <p>Joined date: {{ user.joined_on }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

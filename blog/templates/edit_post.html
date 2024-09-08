@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block content %} {% load static %} {% load filters %}
+<br />
+<h3>Update</h3>
+<br />
+<div class="row">
+    <div class="col-3 row">
+        <div class="col-1"></div>
+        <div class="col">
+            <a onclick="history.back()"
+                ><p class="btn border-3 border-primary-subtle text-light">
+                    back
+                </p></a
+            >
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card text-light bg-dark border-3 border-primary-subtle p-4">
+            <div class="form-group">
+                <form
+                    id="update-form"
+                    method="POST"
+                    enctype="multipart/form-data"
+                >
+                <label for="Body">Body</label>
+                {{ form.body|addclass:'border-3 border-primary-subtle d-block ' }}
+                <label for="Image">Media</label>
+                {{ form.image|addclass:'border-3 border-primary-subtle d-block text-light' }}
+                <label for="Category">Category</label>
+                {{ form.category|addclass:'border-3 border-primary-subtle d-block' }}
+                <br>
+                    <button
+                        class="btn border-3 border-primary-subtle text-light d-block"
+                    >
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

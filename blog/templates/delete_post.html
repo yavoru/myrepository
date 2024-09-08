@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+
+<br />
+<div class="row">
+    <div class="col-3 row">
+        <div class="col-1"></div>
+        <div class="col">
+            <a onclick="history.back()"
+                ><p class="btn border-3 border-primary-subtle text-light">
+                    back
+                </p></a
+            >
+        </div>
+    </div>
+    <div class="col-6">
+        <h3>Delete Post</h3>
+        <div class="form-group">
+            <form action="" method="post">
+                {% csrf_token %}
+                <strong>You sure? <small>It will be delete forerver</small></strong>
+                <button
+                    class="btn border-3 border-primary-subtle text-light"
+                >
+                    Delete
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
